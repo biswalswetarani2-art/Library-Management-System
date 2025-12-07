@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="header">
+    <h1>Dashboard Overview</h1>
+</div>
+
+<div class="cards">
+    <div class="card">
+        <h3>Total Books</h3>
+        <p class="number">{{ total }}</p>
+    </div>
+    <div class="card">
+        <h3>Active Issues</h3>
+        <p class="number">{{ active }}</p>
+    </div>
+    <div class="card">
+        <h3>Overdue</h3>
+        <p class="number">0</p>
+    </div>
+</div>
+
+<div class="recent-activity">
+    <h2>Recent Activity</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Trans ID</th>
+                <th>Student</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in recent %}
+            <tr>
+                <td>#{{ t.id }}</td>
+                <td>{{ t.student_name }}</td>
+                <td><span class="status {{ t.status.lower() }}">{{ t.status }}</span></td>
+                <td>{{ t.issue_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
