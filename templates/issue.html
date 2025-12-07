@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Issue & Return Desk</h1>
+
+<div class="row">
+    <div class="half-width form-panel">
+        <h3>Issue a Book</h3>
+        <form method="POST">
+            <input type="hidden" name="action" value="issue">
+            <input type="number" name="book_id" placeholder="Book ID" required>
+            <input type="text" name="student_name" placeholder="Student Name" required>
+            <button type="submit" class="btn-success">Issue Book</button>
+        </form>
+    </div>
+
+    <div class="half-width form-panel">
+        <h3>Return a Book</h3>
+        <form method="POST">
+            <input type="hidden" name="action" value="return">
+            <input type="number" name="trans_id" placeholder="Transaction ID" required>
+            <button type="submit" class="btn-danger">Return Book</button>
+        </form>
+    </div>
+</div>
+
+<div class="table-panel">
+    <h3>Currently Issued Books</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Trans ID</th>
+                <th>Book ID</th>
+                <th>Student</th>
+                <th>Issue Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in transactions %}
+            <tr>
+                <td>{{ t.id }}</td>
+                <td>{{ t.book_id }}</td>
+                <td>{{ t.student_name }}</td>
+                <td>{{ t.issue_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
