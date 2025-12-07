@@ -1,0 +1,10 @@
+library_system/
+│
+├── app.py                # The main Python backend logic
+├── static/
+│   └── style.css         # Styling for the dashboard
+└── templates/
+    ├── base.html         # The master layout with the Sidebar/Tabs
+    ├── dashboard.html    # The main stats page
+    ├── books.html        # Book management (Add/View)
+    └── issue.html        # Issue/Return functionality
